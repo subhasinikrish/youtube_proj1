@@ -399,7 +399,7 @@ if questions=="1.What are the names of all the videos and their corresponding ch
 elif questions=="2. Which channels have the most number of videos, and how many videos do they have?":
     connection=mysql.connector.connect(host="localhost",user="root",password="12345",database="youtubeproject")
     mycursor=connection.cursor()
-    query2='''select channel_name,total_videos from channeltable order by total_videos desc limit 1'''
+    query2='''select channel_name,total_videos from channeltable order by total_videos desc '''
     mycursor.execute(query2)
     q2=mycursor.fetchall()
     df4=pd.DataFrame(q2,columns=["channel_name","total_videos"])
@@ -436,10 +436,10 @@ elif questions=="5.Which videos have the highest number of likes, and what are t
 elif questions=="6.What is the total number of likes and dislikes for each video, and what are their corresponding video names?":
     connection=mysql.connector.connect(host="localhost",user="root",password="12345",database="youtubeproject")
     mycursor=connection.cursor()
-    query='''select sum(likes) ,video_id from videotable group by video_id order by sum(likes) desc '''
+    query='''select sum(likes),video_title from videotable group by video_id order by sum(likes) desc '''
     mycursor.execute(query)
     q6=mycursor.fetchall()
-    df6=pd.DataFrame(q6,columns=["sum(likes)" ,"video_id"])
+    df6=pd.DataFrame(q6,columns=["sum(likes)","video_title"])
     st.write(df6)
 
 elif questions=="7.What is the total number of views for each channel, and what are their corresponding channel names?":
