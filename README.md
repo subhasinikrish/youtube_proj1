@@ -25,7 +25,11 @@ Skills developed:
      4. Creating webpage in streamlit
      5. Using Github Repository
      This project will enable users to search for and analyse details of multiple youtube channels with the user friendly interface using python codes,mongodb,mysql and streamlit.
-     
+Steps to execute my project:
+    1.To know all the  channel details of your preferred channel, enter the channel in the box given on the top "ENTER YOUR CHANNEL ID"
+    2.Then click the enter button down,and press "CHECK AND INSERT CHANNELDATAS INTO MONGODB" button if the channel already exists you will get a message regarding the same or else your channel details will be  inserted into the mongodb atlas and get True message.
+    3.When you press "TRANSFER DATA FROM MONGODB TO MYSQL" you are able to see the channel,video and comment details by selecting "CHANNELTABLE,VIDEOTABLE OR COMMENTSTABLE" buttons
+    4.If you want to see the results of the query,you can use the select box down by selecting the questions.
      
 
 
