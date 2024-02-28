@@ -358,12 +358,25 @@ if st.button("CHECK AND INSERT CHANNEL DATAS INTO MONGODB"):
         insert=channel_details(channelid)
         st.success(insert)
 
+chan_name=st.text_input("ENTER CHANNEL NAME")
+select_channel=st.selectbox("select channel name",("Career Guidance ASHWIN","Biology Simplified Tamil",
+                                                    "APPLEBOX By Sabari",	
+                                                    "code io - Tamil",	
+                                                    "Dr Pal",
+                                                    "Tamil Chess Channel",
+                                                    "Kaizen English",
+                                                    "Vedantu Master Tamil",
+                                                    "Error Makes Clever Academy",	
+                                                    "Pebbles Tamil"))
+
+if chan_name==select_channel:
+    st.success("The given channel name already existed")
 
 
-
-if  st.button("TRANSFER DATA FROM MONGODB TO MYSQL"):
+elif st.button("TRANSFER DATA FROM MONGODB TO MYSQL"):
       result=table()
-      st.success(result)
+      st.succes(result)
+
 
 view_table=st.radio("VIEW THE SELECTED TABLE",("CHANNELTABLE","VIDEOTABLE","COMMENTTABLE"))
 
