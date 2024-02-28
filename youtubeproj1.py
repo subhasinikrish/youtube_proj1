@@ -76,8 +76,8 @@ def get_video_info(video_details):
                      video_id=i['id'],
                      video_title=i['snippet']['title'],
                      thumnail=i['snippet']['thumbnails']['default']['url'],
-                     published_date=i['snippet']['publishedAt'],
-                     duration=i['contentDetails']['duration'],
+                     published_date=i['snippet']['publishedAt'].strip('Z').replace('T'," "),
+                     duration=i['contentDetails']['duration'].strip('PT,S').replace('M',':').replace('H',':'),
                      commentcount=i['statistics'].get('commentCount'),
                      views=i["statistics"]["viewCount"],
                      likes=i["statistics"]["likeCount"],
@@ -104,7 +104,7 @@ def get_comment_info(video_details):
                          video_id=i['snippet']['topLevelComment']['snippet']['videoId'],
                          comment_text=i['snippet']['topLevelComment']['snippet'][ 'textDisplay'],
                          comment_author=i['snippet']['topLevelComment']['snippet']['authorDisplayName'],
-                         published_date=i['snippet']['topLevelComment']['snippet']['publishedAt'])
+                         published_date=i['snippet']['topLevelComment']['snippet']['publishedAt'].strip('Z').replace('T',' '))
                comment_list.append(data)
     except:
         pass
@@ -187,7 +187,7 @@ def video_table():
                      video_title varchar(100),
                      thumnail varchar(500),
                      published_date varchar(50),
-                     duration  varchar(50) ,
+                     duration varchar(10),
                      commentcount varchar(50),
                      views bigint,
                      likes bigint,
@@ -225,6 +225,7 @@ def video_table():
     mycursor.executemany(query,rows)
     connection.commit()
     return
+
 
 #get comment table
 
@@ -356,9 +357,13 @@ if st.button("CHECK AND INSERT CHANNEL DATAS INTO MONGODB"):
     else:
         insert=channel_details(channelid)
         st.success(insert)
-if st.button("TRANSFER DATA FROM MONGODB TO MYSQL"):
-    result=table()
-    st.success(result)
+
+
+
+
+if  st.button("TRANSFER DATA FROM MONGODB TO MYSQL"):
+      result=table()
+      st.success(result)
 
 view_table=st.radio("VIEW THE SELECTED TABLE",("CHANNELTABLE","VIDEOTABLE","COMMENTTABLE"))
 
