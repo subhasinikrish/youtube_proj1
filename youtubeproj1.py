@@ -375,7 +375,7 @@ if chan_name==select_channel:
 
 elif st.button("TRANSFER DATA FROM MONGODB TO MYSQL"):
       result=table()
-      st.succes(result)
+      st.success(result)
 
 
 view_table=st.radio("VIEW THE SELECTED TABLE",("CHANNELTABLE","VIDEOTABLE","COMMENTTABLE"))
